@@ -1,0 +1,42 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: release/2.0.0
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/ai4os/ai4-accounting:
+      branch: master
+      repo: https://github.com/ai4os/ai4-accounting
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/ai4os/ai4-accounting git:
+        commands:
+        - /usr/bin/env sh .sqa/script.paltry-cinnabar-monster.sh
+        container: qc.acc_muggy-persimmon-chimpanzee
+  QC.Doc:
+    repos:
+      github.com/ai4os/ai4-accounting find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.slaphappy-beige-bandicoot.sh
+        container: qc.doc_flabby-linen-newfoundland
+      github.com/ai4os/ai4-accounting git:
+        commands:
+        - /usr/bin/env sh .sqa/script.smelly-sangria-dane.sh
+        container: qc.doc_smelly-ivory-labradoodle
+  QC.Lic:
+    repos:
+      github.com/ai4os/ai4-accounting licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.droopy-yellow-lionfish.sh
+        container: qc.lic_slimy-harlequin-dachsbracke
+  QC.Ver:
+    repos:
+      github.com/ai4os/ai4-accounting get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.boozy-celadon-tortoise.sh
+        container: qc.ver_cloudy-mustard-wombat
+timeout: 5400
